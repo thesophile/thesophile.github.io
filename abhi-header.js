@@ -5,7 +5,7 @@ let appHeader = `
 	<title>CU Bsc Physics</title>
 	<link rel = "icon" href = "media/channel_logo.png"  type = "image/x-icon">
 	<nav>
-	    <img id="logo" src="media/channel_logo.png" />
+	    <img id="logo" src="media/thesophile_logo.png" />
 	    <button id="hamburger-icon"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
             <ul class="menu">
                 <li> <div  id ="index" onclick='goto(this.id)'>     Home</div></li>
