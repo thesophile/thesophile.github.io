@@ -22,6 +22,7 @@ nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  cursor: pointer;
 }
 
 /* small screen */
@@ -152,13 +153,13 @@ h3 {margin-top:0px;}
 
 /*mac card###########################*/
 
-.card-container{
+.horflex{                                                       /*Flexed class*/
 display:flex;
 align-items:center;
 }
 
 @media only screen and (max-width: 770px ) {
-   .card-container{
+   .horflex{
 	display:flex;
 	align-items:center;
 	flex-direction:column;
@@ -182,6 +183,7 @@ align-items:center;
 width:10rem;
 border-radius:50%;
 transition: transform 0.3s ease;
+cursor: pointer;
 }
 
 .card img:hover {
@@ -229,3 +231,39 @@ transition: transform 0.3s ease;
  background-color: #00ca4e;
 }
 
+.verflex{
+	display:flex;
+	align-items:center;
+	flex-direction:column;
+}
+
+.verflex div{
+	margin:10px;
+}
+
+.contact{
+	margin-top:20px;	
+}
+
+.contact img{
+	width:20px;
+}
+
+/*Chat circle*/
+
+#chat-circle {
+
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+
+
+#chat-circle img{
+	width:100%;
+}
