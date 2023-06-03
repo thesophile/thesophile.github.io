@@ -256,6 +256,7 @@ cursor: pointer;
   position: fixed;
   bottom: 20px;
   right: 20px;
+  z-index:3;
   
   border-radius: 50%;
   width: 60px;
@@ -264,6 +265,3 @@ cursor: pointer;
 }
 
 
-#chat-circle img{
-	width:100%;
-}
