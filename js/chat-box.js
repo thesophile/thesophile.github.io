@@ -13,7 +13,7 @@ $(document).on("click", "#send-it", function() {
       )
     )
       var d = "whatsapp://send";
-    var g = d + "?phone=+31 6 29320129" + e + f;
+    var g = d + "?phone=+91 8589903513" + e + f;
     window.open(g, "_blank");
   }
 }),
