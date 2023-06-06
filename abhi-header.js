@@ -1,17 +1,19 @@
 
 
 let appHeader = `    
-
-	<title>CU Bsc Physics</title>
+	
 	<link rel = "icon" href = "media/channel_logo.png"  type = "image/x-icon">
+        <title>Sophile</title>
+
 	<nav>
 	    <img id="logo" src="media/thesophile_logo.png" />
 	    <button id="hamburger-icon"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
             <ul class="menu">
                 <li> <div  id ="index" onclick='goto(this.id)'>     Home</div></li>
+                <li> <div id="projects" onclick='goto(this.id)'> Projects</div></li>                
                 <li> <div id="Textbooks" onclick='goto(this.id)'>   Github</div></li>
                 <li> <div id="classes" onclick='goto(this.id)'>     Linkedin</div></li>                
-                <li> <div id="experiments" onclick='goto(this.id)'> Projects</div></li>
+
                 
             </ul>
         </nav>
