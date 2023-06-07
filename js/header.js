@@ -10,10 +10,7 @@ let appHeader = `
 	    <button id="hamburger-icon"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
             <ul class="menu">
                 <li> <div  id ="index" onclick='goto(this.id)'>     Home</div></li>
-                <li> <div id="projects" onclick='goto(this.id)'> Projects</div></li>                
-                <li> <div id="Textbooks" onclick='goto(this.id)'>   Github</div></li>
-                <li> <div id="classes" onclick='goto(this.id)'>     Linkedin</div></li>                
-
+                <li> <div id="contact" onclick='goto(this.id)'> Contact</div></li>                
                 
             </ul>
         </nav>
