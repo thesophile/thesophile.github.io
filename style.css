@@ -39,7 +39,6 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-
     max-width: 1280px;
 }
 
