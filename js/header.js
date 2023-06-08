@@ -43,8 +43,8 @@ Button.style.border="3px solid black";
 
  
 hamburgerIcon.addEventListener('click', function() {
-  const computedStyle = getComputedStyle(menu);
-  if (computedStyle.display === "none") {
+
+  if (menu.style.display === "none") {
     menu.style.display = "block";
   } else {
     menu.style.display = "none";
