@@ -33,14 +33,10 @@ Button.style.border="3px solid black";
 	window.open(file_name,"_self")
 }
 
-  const hamburgerIcon = document.getElementById('hamburger-icon');
-  const menu = document.getElementById('menu');
-
-
+//Menu toggle
+  
   $("#hamburger-icon").click(function(){
     $(".menu").toggle();
   });
 
- 
- 
 
