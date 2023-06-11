@@ -6,16 +6,14 @@ let appHeader = `
 	<nav>
 	    <img id="logo" src="media/thesophile_logo.png" />
 	    <button id="hamburger-icon"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
-            <ul class="menu">
+            <ul id="menu" class="menu">
                 <li> <div  id ="index" onclick='goto(this.id)'>     Home</div></li>
                 <li> <div id="contact" onclick='goto(this.id)'> Contact</div></li>                
-                
             </ul>
         </nav>
 `;
 
 document.getElementById("app-header").innerHTML = appHeader;
-
 
 
 //get the name of the current page
@@ -36,17 +34,13 @@ Button.style.border="3px solid black";
 }
 
   const hamburgerIcon = document.getElementById('hamburger-icon');
-  const menu = document.getElementsByClassName('menu')[0];
+  const menu = document.getElementById('menu');
+
+
+  $("#hamburger-icon").click(function(){
+    $(".menu").toggle();
+  });
 
  
-hamburgerIcon.addEventListener('click', function() {
-  
-  
-  if (menu.style.display === "none") {
-    menu.style.display = "block";
-  } else {
-    menu.style.display = "none";
-  }
-});
-
+ 
 
