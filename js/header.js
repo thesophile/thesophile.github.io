@@ -1,8 +1,7 @@
 let appHeader = `    
 	
-	<link rel = "icon" href = "media/channel_logo.png"  type = "image/x-icon">
-        <title>Sophile</title>
-
+	<header>
+        </header>
 	<nav>
 	    <img id="logo" src="media/thesophile_logo.png" />
 	    <button id="hamburger-icon"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
