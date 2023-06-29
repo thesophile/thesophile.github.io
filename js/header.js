@@ -1,15 +1,16 @@
 let appHeader = `    
 	
 	<header>
-        </header>
-	<nav>
+        
+	  <nav>
 	    <img id="logo" src="media/thesophile_logo.png" />
-	    <button id="hamburger-icon"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
-            <ul id="menu" class="menu">
-                <li> <div  id ="index" onclick='goto(this.id)'>     Home</div></li>
-                <li> <div id="contact" onclick='goto(this.id)'> Contact</div></li>                
-            </ul>
-        </nav>
+	      <button id="hamburger-icon"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+        <ul id="menu" class="menu">
+            <li> <div  id ="index" onclick='goto(this.id)'>     Home</div></li>
+            <li> <div id="contact" onclick='goto(this.id)'> Contact</div></li>                
+        </ul>
+    </nav>
+  </header>
 `;
 
 document.getElementById("app-header").innerHTML = appHeader;
