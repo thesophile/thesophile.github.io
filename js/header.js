@@ -3,7 +3,7 @@ let appHeader = `
 	<header>
         
 	  <nav>
-	    <img id="logo" src="media/thesophile_logo.png" />
+	    <img id="logo" src="media/banner.png" />
 	      <button id="hamburger-icon"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
         <ul id="menu" class="menu">
             <li> <div  id ="index" onclick='goto(this.id)'>     Home</div></li>
