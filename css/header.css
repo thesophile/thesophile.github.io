@@ -3,16 +3,33 @@ header{
   top: 0;
   left: 0;
   width: 100%;
+  /* height: 50px;  */
+  display: flex;
+  justify-content: space-between;
   background-color: #ffffff;
-  padding: 20px;
+  padding: 0px;
   z-index: 2;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 6px rgb(255, 255, 255);
   }
+
+nav{
+  display: flex;
+  align-items: center;
+  color:black;
+  cursor: pointer;
+}
+
+nav div{
+  margin: 0 10px;
+}
+
+nav div:hover{
+  color: blue;
+}
 
 body {
   margin-top:100px;
 
-  
 }
 
 
@@ -26,7 +43,19 @@ nav ul {
 /* small screen */
 @media only screen and (max-width: 770px ) {
 
-    #hamburger-icon {
+    header{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    nav{
+      display:flex;
+      color:black;
+    }
+
+    /* #hamburger-icon {
 	    display: block;
 	    width:40px;
 	    height:40px;
@@ -39,18 +68,18 @@ nav ul {
 
      .hamburger-line {
     display: block;
-    width: 20px; /* Adjust the width as needed */
-    height: 2px; /* Adjust the height as needed */
-    background-color: #000; /* Adjust the color as needed */
-    margin-bottom: 4px; /* Adjust the spacing between lines as needed */
-  }
+    width: 20px; 
+    height: 2px; 
+    background-color: #000; 
+    margin-bottom: 4px; 
+  } */
 
     #logo{
-       width:80%;
+       height:50px;
     }
     
 
-    .menu{
+    /* .menu{
     display:none;
     position:fixed;
     top:65px;
@@ -58,7 +87,7 @@ nav ul {
     z-index:2;
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.9);
-    }
+    } */
  
    .myimages {
    width:100%;
@@ -72,19 +101,17 @@ nav ul {
 @media only screen and (min-width: 771px ) {
 
 
-	.menu {
+	/* .menu {
 	  list-style-type: none;
 	  margin: 0;
 	  padding: 0;
 	  float: right;
 	  margin-right: 25px;
-	}
+	} */
 
 	.menu li {
 	  display: inline-block;
 	  margin-left: 10px;
-	  
-
 	}
 
 	.menu li:first-child {
@@ -117,15 +144,15 @@ nav ul {
 
 
 
-	nav li div{
+	/* nav li div{
 	  display: block;
 	  padding: 10px;
 	  text-decoration: none;
 	  color:blue;
-	}
+	} */
 	
-	header{
+	/* header{
 	color:white;
 	padding:10px;
-	}
+	} */
 	

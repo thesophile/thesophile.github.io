@@ -1,19 +1,19 @@
-let appHeader = `    
-	
-	<header>
+let appHeader = `
+		<header>
+    <img id="logo" src="media/banner.png" />
+	  
+    <nav>
+	      
+            <div  id ="index" onclick='goto(this.id)'>     Home</div>
+            <div id="contact" onclick='goto(this.id)'> Contact</div>               
         
-	  <nav>
-	    <img id="logo" src="media/banner.png" />
-	      <button id="hamburger-icon"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
-        <ul id="menu" class="menu">
-            <li> <div  id ="index" onclick='goto(this.id)'>     Home</div></li>
-            <li> <div id="contact" onclick='goto(this.id)'> Contact</div></li>                
-        </ul>
     </nav>
   </header>
 `;
 
 document.getElementById("app-header").innerHTML = appHeader;
+
+//<button id="hamburger-icon"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
 
 
 //get the name of the current page
@@ -24,7 +24,7 @@ console.log( name );
 //get the button with that name
 var Button = document.getElementById(name);
 //change that color of the button
-Button.style.border="3px solid black";
+Button.style.color="blue";
 
 
 
