@@ -30,7 +30,9 @@ align-items:center;
 
 .card {
  width: 300px;
- height: 454px;
+ /* height: 454px; */
+ height: fit-content;
+ padding-bottom:25px;
  margin:10px auto;
  background-color: #011522;
  border-radius: 8px;
@@ -42,9 +44,11 @@ align-items:center;
 
 .card img {
 width:10rem;
+height: 10rem;
 border-radius:50%;
 transition: transform 0.3s ease;
 cursor: pointer;
+background-color: white;
 }
 
 .card img:hover {
