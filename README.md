@@ -1,3 +1,3 @@
 # thesophile.github.io
 
-My personal github page where I showcase my projects...
+My CV
