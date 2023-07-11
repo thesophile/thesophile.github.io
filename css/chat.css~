@@ -1,6 +1,9 @@
 /*Whatsapp chat widget*/
 
-
+body {
+  font-family: "Lato", sans-serif;
+  background: #f1f1f1;
+}
 a:link,
 a:visited {
   color: #444;
@@ -287,8 +290,8 @@ a.close-chat {
     width: 100%;
     z-index: 0;
     opacity: 0.08;
-    /* background-image: url("https://elfsight.com/assets/chats/patterns/whatsapp.png"); */
-    background-image: url(https://res.cloudinary.com/eventbree/image/upload/v1575782560/Widgets/whatsappbg_opt.jpg);
+    background-image: url("https://elfsight.com/assets/chats/patterns/whatsapp.png");
+    // background-image: url(https://res.cloudinary.com/eventbree/image/upload/v1575782560/Widgets/whatsappbg_opt.jpg);
   }
 }
 

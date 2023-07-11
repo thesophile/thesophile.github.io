@@ -5,7 +5,7 @@ let appHeader = `
     <nav>
 	      
             <div  id ="index" onclick='goto(this.id)'>     Home</div>
-            <div id="contact" onclick='goto(this.id)'> Contact</div>               
+            <div id="projects" onclick='goto(this.id)'> Projects</div>               
         
     </nav>
   </header>
