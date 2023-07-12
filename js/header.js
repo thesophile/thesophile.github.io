@@ -25,7 +25,9 @@ console.log( name );
 //get the button with that name
 var Button = document.getElementById(name);
 //change that color of the button
-Button.style.color="blue";
+var style = getComputedStyle(document.body)
+var text_color = style.getPropertyValue('--text');
+Button.style.color= text_color ;
 
 
 
