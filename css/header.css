@@ -36,6 +36,10 @@ header{
   font-size: large;
   }
 
+#banner{
+    height: 40px;
+ } 
+
 nav{
   display: flex;
   align-items: center;
@@ -72,22 +76,44 @@ body {
 @media only screen and (max-width: 770px ) {
 
 
-    nav{
-      display:flex;
-      color:black;
+  
+  nav{
+    display:flex;
+    color:black;
+  }
+  
+  header .menu{
+    display:none;
+    position:fixed;
+    top:65px;
+    right:0;
+    z-index:2;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.9);
     }
+  
+  .myimages {
+  width:100%;
+  } 
 
-    
+  #hamburger-icon {
+    display: block;
+    width:40px;
+    height:40px;
+    float:right;
+    padding:5px;
+    margin-right: 20px;    
+    background-color:white;
+    border:none;
+  }
 
-    #logo{
-       height:50px;
-    }
-    
- 
-   .myimages {
-   width:100%;
-   } 
- 
+   .hamburger-line {
+  display: block;
+  width: 20px; 
+  height: 2px; 
+  background-color: #000; 
+  margin-bottom: 4px; 
+  }
   
      
 } /*end of small screen*/
@@ -105,51 +131,7 @@ body {
     cursor: pointer;
   }
   
-  
-  /* small screen */
-  @media only screen and (max-width: 770px ) {
-  
-      #hamburger-icon {
-        display: block;
-        width:40px;
-        height:40px;
-        float:right;
-        padding:5px;
-        margin-right: 20px;    
-        background-color:white;
-        border:none;
-      }
-  
-       .hamburger-line {
-      display: block;
-      width: 20px; 
-      height: 2px; 
-      background-color: #000; 
-      margin-bottom: 4px; 
-    }
-  
-      #banner{
-         height: 40px;
-      }
-      
-  
-      header .menu{
-      display:none;
-      position:fixed;
-      top:65px;
-      right:0;
-      z-index:2;
-      cursor: pointer;
-      background-color: rgba(255, 255, 255, 0.9);
-      }
-   
-     .myimages {
-     width:100%;
-     } 
-   
-    
-       
-  } /*end of small screen*/
+
   
   /* large screen*/
   @media only screen and (min-width: 771px ) {
@@ -164,20 +146,7 @@ body {
       margin-right: 25px;
     }
   
-    #hamburger-icon {
-    display: none;
-    }
-  
-    #banner{
-    height: 50px;
-    }
-  
-    nav li {
-        display: inline-block;
-        background-color:white;
-     }
-             
-      
+   
   
   }/*Large screen end^^^^^^*/
   
