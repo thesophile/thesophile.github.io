@@ -1,3 +1,4 @@
-# thesophile.github.io
+# My resume
 
-My CV
+My resume including my personal info, educational qualifications and experience.
+
