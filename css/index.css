@@ -125,7 +125,17 @@ background-color: white;
 	width:20px;
 }
 
- 
+.button{
+  background-color: #009688;
+  color:white;
+  padding: 2px 5px;
+  border-radius: 1rem;
+  width:fit-content;
+}
+
+.link{
+  color:blue;
+}
 
 
 
