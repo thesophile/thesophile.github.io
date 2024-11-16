@@ -20,6 +20,7 @@
             <img src="img/logo.png" alt="Sophile Logo" class="logo">
             <h1 class="brand-name">Sophile</h1>
         </div>
+    
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
@@ -28,7 +29,15 @@
                 <li><a href="/contact">Contact</a></li>
             </ul>
         </nav>
+
+        <!-- Hamburger Icon -->
+        <div class="hamburger-icon" onclick="toggleMenu()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
     </header>
+    
     
 
     <!-- Hero Section with YouTube Embed -->
@@ -158,6 +167,13 @@
         <p>&copy; 2024 Sophile. All rights reserved.</p>
     </footer>
 
+<script>
+    function toggleMenu() {
+        // Toggle 'active' class to show/hide the menu
+        document.querySelector('nav').classList.toggle('active');
+    }
+</script>
+    
 
 <script>
     const swiper = new Swiper('.swiper-container', {
