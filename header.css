@@ -1,0 +1,47 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #2e3b4e;
+    color: white;
+    border-bottom: 1px solid #ddd; /* Subtle border for separation */
+    max-width:100%;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between logo and text */
+}
+
+.logo {
+    height: 40px; /* Adjust the size of your logo */
+    width: auto;  /* Maintain aspect ratio */
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+    color: white; /* Darker color for the text */
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px; /* Space between menu items */
+}
+
+nav a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: #ccc; /* Link color */
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: white; /* Darker shade on hover */
+}
