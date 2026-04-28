@@ -1,0 +1,69 @@
+[
+  {
+    "title": "Runwith",
+    "image": "https://abhinavpbabu.github.io/abhinavpbabu/Manim_Screenshot.png",
+    "desc": "Run advanced python libraries on the cloud",
+    "website": "https://manim.runwith.cloud",
+    "repo": "https://github.com/thesophile/runwith",
+    "features": [
+      "Preinstalled library, no setups needed.",
+      "Save and access your code anywhere.",
+      "Mobile accessibility."
+    ],
+    "tech": ["Python", "Django", "PostgreSQL", "DjangoQ", "Docker", "HTML", "CSS", "JavaScript"]
+  },
+  {
+    "title": "Appoint",
+    "image": "https://github.com/user-attachments/assets/195af8d6-40dd-44cc-ac12-386e864d23cc",
+    "desc": "Simple Django app for booking doctor appointments online",
+    "website": "https://cloudpyonline.pythonanywhere.com/",
+    "repo": "https://github.com/thesophile/appoint",
+    "features": [
+      "Book doctor appointments from home",
+      "Generates token number",
+      "Doctors can sign up easily"
+    ],
+    "tech": ["Python", "Django", "HTML", "CSS", "JavaScript"]
+  },
+  {
+    "title": "Restaurant Demo",
+    "image": "https://github.com/user-attachments/assets/76a0244c-1f36-4bf4-ab0c-0cfd17326986",
+    "desc": "Custom React website for restaurants with online ordering",
+    "website": "https://abhinavpbabu.github.io/restaurant-site-demo/",
+    "repo": "https://github.com/abhinavpbabu/restaurant-site-demo",
+    "features": [
+      "Menu and online ordering system",
+      "Clean professional UI",
+      "Maintainable code"
+    ],
+    "tech": ["React", "JavaScript", "Vite", "npm", "TailwindCSS", "CSS"]
+  },
+  {
+    "title": "Static Ecommerce Website",
+    "image": "https://github.com/user-attachments/assets/04d92e94-9bab-434f-b446-13faea592397",
+    "desc": "Fully static ecommerce website",
+    "website": "https://thesophile.github.io/static-ecommerce-website/",
+    "repo": "https://github.com/thesophile/static-ecommerce-website",
+    "features": [
+      "Fully static",
+      "Cart and checkout system",
+      "Email notifications on order"
+    ],
+    "tech": ["HTML", "CSS", "JavaScript"]
+  },
+  {
+    "title": "YT Downloader GUI",
+    "image": "https://github.com/user-attachments/assets/f11cb12c-7179-4f05-8181-feeaac8a3b52",
+    "desc": "GUI for yt-dlp built with Python",
+    "website": null,
+    "repo": "https://github.com/thesophile/yt-downloader",
+    "features": [
+      "Download videos in multiple qualities",
+      "Choose output format",
+      "Select download location",
+      "Real-time progress display",
+      "Built with Tkinter"
+    ],
+    "tech": ["Python", "Tkinter"]
+  }
+]

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhinav | Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        .font-minecraft {
+            font-family: 'Press Start 2P';
+        }
+
+        h2 {
+            font-family: 'Press Start 2P';
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-900 font-sans">
+
+    <!-- Container -->
+    <div class="max-w-5xl mx-auto px-6">
+
+        <!-- Hero -->
+        <section class="py-20 flex flex-col md:flex-row items-center gap-10">
+
+            <!-- LEFT -->
+            <div class="flex-1">
+                <h1 class="text-2xl md:text-3xl font-bold font-minecraft">
+                    Abhinav P Babu
+                </h1>
+
+                <p class="mt-3 text-gray-600">
+                    Web Developer • Python • Django
+                </p>
+
+                <!-- badges -->
+                <div class="mt-5 flex flex-wrap gap-2">
+                    <span class="px-3 py-1 text-sm border rounded">Python</span>
+                    <span class="px-3 py-1 text-sm border rounded">Django</span>
+                    <span class="px-3 py-1 text-sm border rounded">Linux</span>
+                    <span class="px-3 py-1 text-sm border rounded">React</span>
+                </div>
+
+                <div class="mt-6 flex gap-4">
+                    <a href="#featured" class="px-5 py-2 bg-black text-white rounded">Projects</a>
+                    <a href="#contact" class="px-5 py-2 border rounded">Contact</a>
+                </div>
+            </div>
+
+            <!-- RIGHT -->
+            <div class="flex-1 flex justify-center">
+                <img src="profile.jpg" class="w-48 md:w-64 object-cover rounded-lg mix-blend-multiply opacity-95" />
+            </div>
+
+        </section>
+
+        <!-- About -->
+        <section class="py-16">
+            <h2 class="text-2xl font-semibold border-b pb-2 mb-4">About</h2>
+            <p class="mt-4 max-w-2xl text-gray-700">
+                Hi, I am a web developer with a passion for building efficient and scalable applications. I have
+                experience working with Python, Django, and React, and I enjoy contributing to open source projects. I
+                am always eager to learn new technologies and take on challenging projects that allow me to grow as a
+                developer.
+            </p>
+        </section>
+
+        <!-- Skills -->
+        <section class="py-16">
+            <h2 class="text-2xl font-semibold border-b pb-2 mb-4">Skills ⚙️</h2>
+            <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                <div class="border p-3">Web development (Python, Django)</div>
+                <div class="border p-3">Web designing (HTML, CSS, JavaScript, React)</div>
+                <div class="border p-3">Deployment and hosting</div>
+                <div class="border p-3">REST API development</div>
+                <div class="border p-3">Database handling (SQLite, Postgres, MySQL)</div>
+                <div class="border p-3">Version control (Git/GitHub)</div>
+                <div class="border p-3">AWS (EC2, SSM, networking)</div>
+                <div class="border p-3">Maintenance</div>
+                <div class="border p-3">Responsive UI design</div>
+                <div class="border p-3">API integration</div>
+                <div class="border p-3">Performance optimization</div>
+                <div class="border p-3">Security best practices</div>
+                <div class="border p-3">Debugging and troubleshooting</div>
+                <div class="border p-3">Documentation</div>
+                <div class="border p-3">UI/UX fundamentals</div>
+                <div class="border p-3">Testing basics</div>
+            </div>
+        </section>
+
+        <!-- Achievements -->
+        <section class="py-16">
+            <h2 class="text-2xl font-semibold border-b pb-2 mb-4">Achievements 🎖️</h2>
+            <ul class="mt-4 list-disc list-inside text-gray-700">
+                <li>Merged Pull request to Django-q2</li>
+                <li>Developed and deployed website for rendering videos using python libraries</li>
+                <li>Worked on useful Open Source projects</li>
+            </ul>
+        </section>
+
+    </div>
+
+    <!-- Featured Projects -->
+    <section class="py-16" id="featured">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-2xl font-semibold border-b pb-2 mb-6">Projects 🚀</h2>
+
+            <div class="relative overflow-hidden">
+
+                <!-- Slider -->
+                <div id="slider" class="flex transition-transform duration-500">
+                    <!-- Slides will be injected here by JavaScript -->
+                </div>
+
+                <!-- Buttons -->
+                <button onclick="prev()"
+                    class="absolute left-2 top-1/2 -translate-y-1/2 bg-white border px-3 py-1">←</button>
+                <button onclick="next()"
+                    class="absolute right-2 top-1/2 -translate-y-1/2 bg-white border px-3 py-1">→</button>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="py-16">
+        <div class="max-w-5xl mx-auto px-6">
+
+            <!-- <h2 class="text-2xl font-semibold border-b pb-2 mb-4">Projects 💡</h2> -->
+
+            <div id="projects-container" class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+        </div>
+    </section>
+
+    <div class="max-w-5xl mx-auto px-6">
+
+        <div class="max-w-5xl mx-auto px-6">
+            <!-- Contact -->
+            <section id="contact" class="py-16">
+                <h2 class="text-2xl font-semibold border-b pb-2 mb-4">Contact</h2>
+                <div class="mt-4 space-y-2">
+                    <p> <i class="fa-solid fa-envelope"></i>
+                        Email: <a href="mailto:abhinavbabu.contact@gmail.com"
+                            class="underline">abhinavbabu.contact@gmail.com</a></p>
+                    <p> <i class="fa-brands fa-github"></i>
+                        GitHub: <a href="https://github.com/thesophile" target="_blank"
+                            class="underline">github.com/thesophile</a></p>
+                    <p> <i class="fa-brands fa-linkedin"></i>
+                        LinkedIn: <a href="https://linkedin.com/in/abhinav-p-babu" target="_blank"
+                            class="underline">linkedin.com/in/abhinav-p-babu</a></p>
+                </div>
+            </section>
+
+        </div>
+
+        <script src="script.js"></script>
+
+
+</body>
+
+</html>
