@@ -31,6 +31,7 @@
             <div class="hidden md:flex gap-6 text-sm">
                 <a href="#skills" class="hover:underline">Skills</a>
                 <a href="#featured" class="hover:underline">Projects</a>
+                <a href="#videos" class="hover:underline">Videos</a>
                 <a href="#contact" class="hover:underline">Contact</a>
             </div>
 
@@ -165,6 +166,19 @@
         </div>
     </section>
 
+    <!-- Videos -->
+    <section class="py-16" id="videos">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-2xl font-semibold border-b pb-2 mb-6">Videos 🎬</h2>
+
+            <div id="videos-container" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+
+            <div class="mt-8 text-center">
+                <button id="videos-more-btn" class="px-6 py-2 border rounded text-sm hover:bg-gray-50 hidden">View more</button>
+            </div>
+        </div>
+    </section>
+
     <section class="px-6">
 
         <div class="max-w-6xl mx-auto px-6">
@@ -185,6 +199,53 @@
             </section>
 
     </section>
+
+    <script>
+        const VIDEOS_PER_PAGE = 6;
+        let allVideos = [];
+        let videosShown = 0;
+
+        function renderVideos(videos) {
+            const container = document.getElementById('videos-container');
+            const btn = document.getElementById('videos-more-btn');
+            const batch = videos.slice(videosShown, videosShown + VIDEOS_PER_PAGE);
+
+            batch.forEach(v => {
+                const div = document.createElement('div');
+                div.className = 'border rounded overflow-hidden';
+                div.innerHTML = `
+                    <div class="aspect-video w-full">
+                        <iframe
+                            class="w-full h-full"
+                            src="https://www.youtube.com/embed/${v.youtube_id}"
+                            title="${v.title}"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="p-3 text-sm font-medium">${v.title}</div>
+                `;
+                container.appendChild(div);
+            });
+
+            videosShown += batch.length;
+            btn.classList.toggle('hidden', videosShown >= allVideos.length);
+        }
+
+        fetch('videos.json')
+            .then(res => res.json())
+            .then(data => {
+                allVideos = data;
+                renderVideos(allVideos);
+                document.getElementById('videos-more-btn').addEventListener('click', () => {
+                    renderVideos(allVideos);
+                });
+            })
+            .catch(() => {
+                document.getElementById('videos-container').innerHTML = '<p class="text-gray-500 text-sm">Failed to load videos.</p>';
+            });
+    </script>
 
     <script src="script.js"></script>
 
