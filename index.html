@@ -51,6 +51,8 @@
                     class="hover:underline">Skills</a>
                 <a href="#featured" onclick="document.getElementById('mobile-menu').classList.add('hidden')"
                     class="hover:underline">Projects</a>
+                <a href="#videos" onclick="document.getElementById('mobile-menu').classList.add('hidden')"
+                    class="hover:underline">Videos</a>
                 <a href="#contact" onclick="document.getElementById('mobile-menu').classList.add('hidden')"
                     class="hover:underline">Contact</a>
             </div>
@@ -133,35 +135,16 @@
 
     </div>
 
-    <!-- Featured Projects -->
-    <section id="featured" class="pt-16">
+    <!-- Projects -->
+    <section id="featured" class="py-16">
         <div class="max-w-6xl mx-auto px-6">
             <h2 class="text-2xl font-semibold border-b pb-2 mb-6">Projects 🚀</h2>
 
-            <div class="relative overflow-hidden">
+            <!-- Featured full-width tile -->
+            <div id="featured-project" class="mb-6"></div>
 
-                <!-- Slider -->
-                <div id="slider" class="flex transition-transform duration-500">
-                    <!-- Slides will be injected here by JavaScript -->
-                </div>
-
-                <!-- Buttons -->
-                <button onclick="prev()"
-                    class="absolute left-2 top-1/2 -translate-y-1/2 bg-white border px-3 py-1">←</button>
-                <button onclick="next()"
-                    class="absolute right-2 top-1/2 -translate-y-1/2 bg-white border px-3 py-1">→</button>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="py-1">
-        <div class="max-w-6xl mx-auto px-6">
-
-            <!-- <h2 class="text-2xl font-semibold border-b pb-2 mb-4">Projects 💡</h2> -->
-
-            <div id="projects-container" class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            <!-- Rest of projects: 3-column grid -->
+            <div id="projects-container" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 
         </div>
     </section>
