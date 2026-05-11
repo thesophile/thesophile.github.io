@@ -16,8 +16,6 @@ function resolveImage(img, repoUrl) {
     if (githubThumb) fallbacks.push(githubThumb);
     fallbacks.push('img/project_placeholder.webp');
 
-    let attempt = 0;
-
     imgEl.dataset.fallbacks = JSON.stringify(fallbacks);
     imgEl.dataset.attempt = '0';
 
@@ -98,14 +96,16 @@ function renderGridBatch() {
     if (btn) btn.classList.toggle('hidden', gridShown >= allGridCards.length);
 }
 
-// Fetch projects.json (featured tile + first grid cards)
-// Then fetch GitHub repos and append to grid
+// Parse owner/repo from a GitHub URL
+function parseGithubUrl(url) {
+    const match = url.match(/github\.com\/([^/]+)\/([^/]+)/);
+    return match ? { owner: match[1], repo: match[2] } : null;
+}
+
 Promise.all([
     fetch('projects.json').then(r => r.json()),
-    fetch('https://api.github.com/users/thesophile/repos', {
-        headers: { 'Accept': 'application/vnd.github.mercy-preview+json' }
-    }).then(r => r.json()).catch(() => [])
-]).then(([projects, githubRepos]) => {
+    fetch('repos.json').then(r => r.json())
+]).then(([projects, repoUrls]) => {
     const featuredEl = document.getElementById('featured-project');
 
     // --- Featured tile (first item in projects.json) ---
@@ -144,33 +144,45 @@ Promise.all([
         `;
     }
 
-    // --- Grid: remaining projects.json items first ---
+    // --- Grid: remaining projects.json items ---
     projects.slice(1).forEach(p => {
         allGridCards.push(makeGridCard(p.title, p.desc, p.image, p.website, p.repo, p.tech));
     });
 
-    // --- Grid: GitHub repos tagged 'portfolio', skip ones already in projects.json ---
-    const TAG = 'portfolio';
+    // --- Grid: fetch each repo from repos.json in order, skip duplicates ---
     const existingRepos = new Set(projects.map(p => p.repo));
-    if (Array.isArray(githubRepos)) {
-        githubRepos
-            .filter(r => r.topics && r.topics.includes(TAG) && !existingRepos.has(r.html_url))
-            .forEach(r => {
-                allGridCards.push(makeGridCard(
-                    r.name,
-                    r.description || 'No description',
-                    null,
-                    r.homepage || null,
-                    r.html_url,
-                    []
-                ));
-            });
-    }
 
-    renderGridBatch();
+    const repoFetches = repoUrls
+        .filter(url => !existingRepos.has(url))
+        .map(url => {
+            const parsed = parseGithubUrl(url);
+            if (!parsed) return Promise.resolve(null);
+            return fetch(`https://api.github.com/repos/${parsed.owner}/${parsed.repo}`)
+                .then(r => r.json())
+                .catch(() => null);
+        });
 
-    const btn = document.getElementById('projects-more-btn');
-    if (btn) btn.addEventListener('click', renderGridBatch);
+    // Use allSettled to preserve order even if some fail
+    return Promise.allSettled(repoFetches).then(results => {
+        results.forEach(result => {
+            if (result.status !== 'fulfilled' || !result.value) return;
+            const r = result.value;
+            if (r.message) return; // GitHub API error (e.g. not found)
+            allGridCards.push(makeGridCard(
+                r.name,
+                r.description || 'No description',
+                null,
+                r.homepage || null,
+                r.html_url,
+                []
+            ));
+        });
+
+        renderGridBatch();
+
+        const btn = document.getElementById('projects-more-btn');
+        if (btn) btn.addEventListener('click', renderGridBatch);
+    });
 
 }).catch(() => {
     document.getElementById('featured-project').innerHTML = 'Failed to load projects';
