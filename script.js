@@ -74,7 +74,7 @@ function makeGridCard(title, desc, imageUrl, websiteUrl, repoUrl, techList = [])
     infoDiv.className = 'p-4 flex flex-col flex-1';
     infoDiv.innerHTML = `
         <h3 class="font-semibold">${title}</h3>
-        <p class="text-sm text-gray-600 mt-1 flex-1">${desc}</p>
+        <p class="text-sm mt-1 flex-1" style="color:var(--text-muted)">${desc}</p>
         ${techTags ? `<div class="mt-3 flex flex-wrap gap-1">${techTags}</div>` : ''}
         <div class="mt-3 text-sm">${websiteLink}${repoLink}</div>
     `;
@@ -127,8 +127,8 @@ Promise.all([
                     <div>
                         <span class="text-xs border px-2 py-0.5 rounded uppercase tracking-wide">Featured</span>
                         <h3 class="mt-3 text-xl font-semibold">${fp.title}</h3>
-                        <p class="text-sm text-gray-600 mt-2">${fp.desc}</p>
-                        <ul class="mt-3 text-sm text-gray-700 list-disc list-inside space-y-1">
+                        <p class="text-sm mt-2" style="color:var(--text-muted)">${fp.desc}</p>
+                        <ul class="mt-3 text-sm list-disc list-inside space-y-1" style="color:var(--text-muted)">
                             ${(fp.features || []).map(f => `<li>${f}</li>`).join('')}
                         </ul>
                     </div>

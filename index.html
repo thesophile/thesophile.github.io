@@ -9,7 +9,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         .font-minecraft {
             font-family: 'Press Start 2P';
@@ -18,35 +17,144 @@
         h2 {
             font-family: 'Press Start 2P';
         }
+
+        /* ── Theme tokens ── */
+        :root {
+            --bg: #ffffff;
+            --bg-nav: #ffffff;
+            --bg-card: #f9fafb;
+            --text: #111827;
+            --text-muted: #4b5563;
+            --text-subtle: #6b7280;
+            --border: #e5e7eb;
+            --hover-bg: #f3f4f6;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0f0f0f;
+            --bg-nav: #111111;
+            --bg-card: #1a1a1a;
+            --text: #f3f4f6;
+            --text-muted: #d1d5db;
+            --text-subtle: #9ca3af;
+            --border: #2a2a2a;
+            --hover-bg: #1f1f1f;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            transition: background-color 0.25s, color 0.25s;
+        }
+
+        nav {
+            background-color: var(--bg-nav);
+            border-color: var(--border);
+        }
+
+        #mobile-menu {
+            background-color: var(--bg-nav);
+            border-color: var(--border);
+        }
+
+        /* Skills / border cards */
+        .theme-border {
+            border-color: var(--border);
+        }
+
+        .theme-card {
+            background-color: var(--bg-card);
+            border-color: var(--border);
+        }
+
+        /* Text helpers */
+        .theme-muted  { color: var(--text-muted); }
+        .theme-subtle { color: var(--text-subtle); }
+
+        /* Links */
+        a { color: inherit; }
+
+        /* Toggle button */
+        #theme-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: transparent;
+            cursor: pointer;
+            color: var(--text);
+            transition: background 0.2s;
+            font-size: 15px;
+            flex-shrink: 0;
+        }
+
+        #theme-toggle:hover { background: var(--hover-bg); }
+
+        /* Hamburger lines */
+        .ham-line { background-color: var(--text); }
+
+        /* View-more buttons */
+        .theme-btn {
+            border: 1px solid var(--border);
+            color: var(--text);
+            background: transparent;
+        }
+        .theme-btn:hover { background: var(--hover-bg); }
+
+        /* Video + project cards inherit border */
+        #videos-container .border,
+        #projects-container .border,
+        #featured-project .border {
+            border-color: var(--border);
+            background-color: var(--bg-card);
+        }
+
+        /* Profile image: keep mix-blend only in light mode */
+        [data-theme="dark"] #profile-img {
+            mix-blend-mode: normal;
+            opacity: 1;
+        }
     </style>
 </head>
 
-<body class="bg-white text-gray-900 font-sans">
+<body class="font-sans">
 
     <!-- Navbar -->
-    <nav class="sticky top-0 z-50 bg-white border-b">
+    <nav class="sticky top-0 z-50 border-b">
         <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-14">
             <span class="font-minecraft text-sm">APB</span>
 
             <!-- Desktop links -->
-            <div class="hidden md:flex gap-6 text-sm">
+            <div class="hidden md:flex gap-6 text-sm items-center">
                 <a href="#skills" class="hover:underline">Skills</a>
                 <a href="#featured" class="hover:underline">Projects</a>
                 <a href="#videos" class="hover:underline">Videos</a>
                 <a href="#contact" class="hover:underline">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">
+                    <span id="theme-icon">☾</span>
+                </button>
             </div>
 
-            <!-- Hamburger -->
-            <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-1"
-                onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-                <span class="block w-5 h-0.5 bg-gray-900"></span>
-                <span class="block w-5 h-0.5 bg-gray-900"></span>
-                <span class="block w-5 h-0.5 bg-gray-900"></span>
-            </button>
+            <!-- Mobile: hamburger + toggle -->
+            <div class="md:hidden flex items-center gap-3">
+                <button id="theme-toggle-mobile" aria-label="Toggle dark/light mode"
+                    style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;border:1px solid var(--border);background:transparent;cursor:pointer;color:var(--text);font-size:15px;">
+                    <span id="theme-icon-mobile">☾</span>
+                </button>
+                <button id="hamburger" class="flex flex-col gap-1.5 p-1"
+                    onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                    <span class="block w-5 h-0.5 ham-line"></span>
+                    <span class="block w-5 h-0.5 ham-line"></span>
+                    <span class="block w-5 h-0.5 ham-line"></span>
+                </button>
+            </div>
         </div>
 
         <!-- Mobile dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden border-t bg-white">
+        <div id="mobile-menu" class="hidden md:hidden border-t">
             <div class="max-w-6xl mx-auto px-6 py-3 flex flex-col gap-3 text-sm">
                 <a href="#skills" onclick="document.getElementById('mobile-menu').classList.add('hidden')"
                     class="hover:underline">Skills</a>
@@ -65,69 +173,59 @@
 
         <!-- Hero -->
         <section class="py-12 md:py-20 flex flex-col md:flex-row md:items-start gap-8 md:gap-12">
-
-            <!-- Photo: full-width on mobile, fixed width on desktop, left-aligned -->
             <div class="w-full md:w-auto md:shrink-0">
-                <img src="img/profile.jpg" class="w-full md:w-64 object-cover rounded-lg mix-blend-multiply opacity-95" />
+                <img id="profile-img" src="img/profile.jpg"
+                    class="w-full md:w-64 object-cover rounded-lg mix-blend-multiply opacity-95" />
             </div>
-
-            <!-- Text -->
             <div class="flex-1">
                 <h1 class="text-2xl md:text-3xl font-bold font-minecraft">
                     Abhinav P Babu
                 </h1>
-
-                <p class="mt-3 text-gray-600">
+                <p class="mt-3 theme-muted">
                     Web Developer • Python • Django
                 </p>
-
-                <!-- badges -->
                 <div class="mt-5 flex flex-wrap gap-2">
-                    <span class="px-3 py-1 text-sm border rounded">Python</span>
-                    <span class="px-3 py-1 text-sm border rounded">Django</span>
-                    <span class="px-3 py-1 text-sm border rounded">Linux</span>
-                    <span class="px-3 py-1 text-sm border rounded">React</span>
+                    <span class="px-3 py-1 text-sm border rounded theme-border">Python</span>
+                    <span class="px-3 py-1 text-sm border rounded theme-border">Django</span>
+                    <span class="px-3 py-1 text-sm border rounded theme-border">Linux</span>
+                    <span class="px-3 py-1 text-sm border rounded theme-border">React</span>
                 </div>
-
-                <p class="mt-5 max-w-2xl text-gray-700">
+                <p class="mt-5 max-w-2xl theme-muted">
                     Hi, I am a web developer with a passion for building efficient and scalable applications. I have
                     experience working with Python, Django, and React, and I enjoy contributing to open source projects.
-                    I
-                    am always eager to learn new technologies and take on challenging projects that allow me to grow as
-                    a
-                    developer.
+                    I am always eager to learn new technologies and take on challenging projects that allow me to grow as
+                    a developer.
                 </p>
             </div>
-
         </section>
 
         <!-- Skills -->
         <section class="py-16" id="skills">
-            <h2 class="text-2xl font-semibold border-b pb-2 mb-4">Skills ⚙️</h2>
+            <h2 class="text-2xl font-semibold border-b pb-2 mb-4 theme-border">Skills ⚙️</h2>
             <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-                <div class="border p-3">Web development (Python, Django)</div>
-                <div class="border p-3">Web designing (HTML, CSS, JavaScript, React)</div>
-                <div class="border p-3">Deployment and hosting</div>
-                <div class="border p-3">REST API development</div>
-                <div class="border p-3">Database handling (SQLite, Postgres, MySQL)</div>
-                <div class="border p-3">Version control (Git/GitHub)</div>
-                <div class="border p-3">AWS (EC2, SSM, networking)</div>
-                <div class="border p-3">Maintenance</div>
-                <div class="border p-3">Responsive UI design</div>
-                <div class="border p-3">API integration</div>
-                <div class="border p-3">Performance optimization</div>
-                <div class="border p-3">Security best practices</div>
-                <div class="border p-3">Debugging and troubleshooting</div>
-                <div class="border p-3">Documentation</div>
-                <div class="border p-3">UI/UX fundamentals</div>
-                <div class="border p-3">Testing basics</div>
+                <div class="border p-3 theme-border">Web development (Python, Django)</div>
+                <div class="border p-3 theme-border">Web designing (HTML, CSS, JavaScript, React)</div>
+                <div class="border p-3 theme-border">Deployment and hosting</div>
+                <div class="border p-3 theme-border">REST API development</div>
+                <div class="border p-3 theme-border">Database handling (SQLite, Postgres, MySQL)</div>
+                <div class="border p-3 theme-border">Version control (Git/GitHub)</div>
+                <div class="border p-3 theme-border">AWS (EC2, SSM, networking)</div>
+                <div class="border p-3 theme-border">Maintenance</div>
+                <div class="border p-3 theme-border">Responsive UI design</div>
+                <div class="border p-3 theme-border">API integration</div>
+                <div class="border p-3 theme-border">Performance optimization</div>
+                <div class="border p-3 theme-border">Security best practices</div>
+                <div class="border p-3 theme-border">Debugging and troubleshooting</div>
+                <div class="border p-3 theme-border">Documentation</div>
+                <div class="border p-3 theme-border">UI/UX fundamentals</div>
+                <div class="border p-3 theme-border">Testing basics</div>
             </div>
         </section>
 
         <!-- Achievements -->
         <section class="py-16">
-            <h2 class="text-2xl font-semibold border-b pb-2 mb-4">Achievements 🎖️</h2>
-            <ul class="mt-4 list-disc list-inside text-gray-700">
+            <h2 class="text-2xl font-semibold border-b pb-2 mb-4 theme-border">Achievements 🎖️</h2>
+            <ul class="mt-4 list-disc list-inside theme-muted">
                 <li>Merged Pull request to Django-q2</li>
                 <li>Developed and deployed website for rendering videos using python libraries</li>
                 <li>Worked on useful Open Source projects</li>
@@ -139,54 +237,91 @@
     <!-- Projects -->
     <section id="featured" class="py-16">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-2xl font-semibold border-b pb-2 mb-6">Projects 🚀</h2>
-
-            <!-- Featured full-width tile -->
+            <h2 class="text-2xl font-semibold border-b pb-2 mb-6 theme-border">Projects 🚀</h2>
             <div id="featured-project" class="mb-6"></div>
-
-            <!-- Rest of projects: 3-column grid -->
             <div id="projects-container" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-
             <div class="mt-8 text-center">
-                <button id="projects-more-btn" class="px-6 py-2 border rounded text-sm hover:bg-gray-50 hidden">View more</button>
+                <button id="projects-more-btn"
+                    class="px-6 py-2 text-sm rounded theme-btn hidden">View more</button>
             </div>
-
         </div>
     </section>
 
     <!-- Videos -->
     <section class="py-16" id="videos">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-2xl font-semibold border-b pb-2 mb-6">Videos 🎬</h2>
-
+            <h2 class="text-2xl font-semibold border-b pb-2 mb-6 theme-border">Videos 🎬</h2>
             <div id="videos-container" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-
             <div class="mt-8 text-center">
-                <button id="videos-more-btn" class="px-6 py-2 border rounded text-sm hover:bg-gray-50 hidden">View more</button>
+                <button id="videos-more-btn"
+                    class="px-6 py-2 text-sm rounded theme-btn hidden">View more</button>
             </div>
         </div>
     </section>
 
     <section class="px-6">
-
         <div class="max-w-6xl mx-auto px-6">
             <!-- Contact -->
             <section id="contact" class="py-16">
-                <h2 class="text-2xl font-semibold border-b pb-2 mb-4">Contact</h2>
-                <div class="mt-4 space-y-2">
-                    <p> <i class="fa-solid fa-envelope"></i>
+                <h2 class="text-2xl font-semibold border-b pb-2 mb-4 theme-border">Contact</h2>
+                <div class="mt-4 space-y-2 theme-muted">
+                    <p><i class="fa-solid fa-envelope"></i>
                         Email: <a href="mailto:abhinavbabu.contact@gmail.com" class="underline">mail@abhinavbabu.in</a>
                     </p>
-                    <p> <i class="fa-brands fa-github"></i>
+                    <p><i class="fa-brands fa-github"></i>
                         GitHub: <a href="https://github.com/thesophile" target="_blank"
                             class="underline">github.com/thesophile</a></p>
-                    <p> <i class="fa-brands fa-linkedin"></i>
+                    <p><i class="fa-brands fa-linkedin"></i>
                         LinkedIn: <a href="https://linkedin.com/in/abhinav-p-babu" target="_blank"
                             class="underline">linkedin.com/in/abhinav-p-babu</a></p>
                 </div>
             </section>
-
+        </div>
     </section>
+
+    <!-- ── Theme script (runs before paint to avoid flash) ── -->
+    <script>
+        (function () {
+            const saved = localStorage.getItem('theme');
+            const osDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = saved || (osDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+
+            function syncIcons(theme) {
+                const icon = document.getElementById('theme-icon');
+                const iconM = document.getElementById('theme-icon-mobile');
+                const symbol = theme === 'dark' ? '☀' : '☾';
+                if (icon) icon.textContent = symbol;
+                if (iconM) iconM.textContent = symbol;
+            }
+
+            function applyTheme(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+                syncIcons(theme);
+            }
+
+            // Wire up toggles after DOM is ready
+            document.addEventListener('DOMContentLoaded', function () {
+                syncIcons(theme);
+
+                function toggle() {
+                    const current = document.documentElement.getAttribute('data-theme');
+                    applyTheme(current === 'dark' ? 'light' : 'dark');
+                }
+
+                document.getElementById('theme-toggle').addEventListener('click', toggle);
+                document.getElementById('theme-toggle-mobile').addEventListener('click', toggle);
+            });
+
+            // Follow OS changes only if user hasn't set a manual preference
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+                if (!localStorage.getItem('theme')) {
+                    applyTheme(e.matches ? 'dark' : 'light');
+                }
+            });
+        })();
+    </script>
 
     <script>
         const VIDEOS_PER_PAGE = 6;
@@ -201,6 +336,8 @@
             batch.forEach(v => {
                 const div = document.createElement('div');
                 div.className = 'border rounded overflow-hidden';
+                div.style.borderColor = 'var(--border)';
+                div.style.backgroundColor = 'var(--bg-card)';
                 div.innerHTML = `
                     <div class="aspect-video w-full">
                         <iframe
@@ -231,12 +368,12 @@
                 });
             })
             .catch(() => {
-                document.getElementById('videos-container').innerHTML = '<p class="text-gray-500 text-sm">Failed to load videos.</p>';
+                document.getElementById('videos-container').innerHTML =
+                    '<p class="theme-subtle text-sm">Failed to load videos.</p>';
             });
     </script>
 
     <script src="script.js"></script>
-
 
 </body>
 
