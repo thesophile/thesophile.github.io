@@ -53,7 +53,7 @@
   },
   {
     "title": "YT Downloader GUI",
-    "image": "https://github.com/user-attachments/assets/f11cb12c-7179-4f05-8181-feeaac8a3b52",
+    "image": "/img/thumbnails/yt-downloader.webp",
     "desc": "GUI for yt-dlp built with Python",
     "website": null,
     "repo": "https://github.com/thesophile/yt-downloader",
