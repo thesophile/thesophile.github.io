@@ -17,7 +17,7 @@
     "image": "https://github.com/user-attachments/assets/195af8d6-40dd-44cc-ac12-386e864d23cc",
     "desc": "Simple Django app for booking doctor appointments online",
     "website": "https://cloudpyonline.pythonanywhere.com/",
-    "repo": "https://github.com/thesophile/appoint",
+    "repo": "https://raw.githubusercontent.com/thesophile/appoint/main/thumbnail/thumbnail.webp",
     "features": [
       "Book doctor appointments from home",
       "Generates token number",
@@ -27,10 +27,10 @@
   },
   {
     "title": "Restaurant Demo",
-    "image": "https://github.com/user-attachments/assets/76a0244c-1f36-4bf4-ab0c-0cfd17326986",
+    "image": "/img/thumbnails/restaurant.webp",
     "desc": "Custom React website for restaurants with online ordering",
     "website": "https://abhinavpbabu.github.io/restaurant-site-demo/",
-    "repo": "https://github.com/abhinavpbabu/restaurant-site-demo",
+    "repo": "https://github.com/abhinavpbabu/restaurant-site",
     "features": [
       "Menu and online ordering system",
       "Clean professional UI",
