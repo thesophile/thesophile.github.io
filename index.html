@@ -5,119 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abhinav Babu | Web Developer, Python Django, Kerala</title>
-    <meta name="description" content="Abhinav P Babu is a web developer from Kerala specializing in Python and Django. With a passion for building efficient and scalable applications, Abhinav has experience working with various technologies and contributing to open source projects. Explore his portfolio, projects, and contact information on his personal website.">
+    <meta name="description"
+        content="Abhinav P Babu is a web developer from Kerala specializing in Python and Django. With a passion for building efficient and scalable applications, Abhinav has experience working with various technologies and contributing to open source projects. Explore his portfolio, projects, and contact information on his personal website.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <style>
-        .font-minecraft {
-            font-family: 'Press Start 2P';
-        }
-
-        h2 {
-            font-family: 'Press Start 2P';
-        }
-
-        /* ── Theme tokens ── */
-        :root {
-            --bg: #ffffff;
-            --bg-nav: #ffffff;
-            --bg-card: #f9fafb;
-            --text: #111827;
-            --text-muted: #4b5563;
-            --text-subtle: #6b7280;
-            --border: #e5e7eb;
-            --hover-bg: #f3f4f6;
-        }
-
-        [data-theme="dark"] {
-            --bg: #0f0f0f;
-            --bg-nav: #111111;
-            --bg-card: #1a1a1a;
-            --text: #f3f4f6;
-            --text-muted: #d1d5db;
-            --text-subtle: #9ca3af;
-            --border: #2a2a2a;
-            --hover-bg: #1f1f1f;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            transition: background-color 0.25s, color 0.25s;
-        }
-
-        nav {
-            background-color: var(--bg-nav);
-            border-color: var(--border);
-        }
-
-        #mobile-menu {
-            background-color: var(--bg-nav);
-            border-color: var(--border);
-        }
-
-        /* Skills / border cards */
-        .theme-border {
-            border-color: var(--border);
-        }
-
-        .theme-card {
-            background-color: var(--bg-card);
-            border-color: var(--border);
-        }
-
-        /* Text helpers */
-        .theme-muted  { color: var(--text-muted); }
-        .theme-subtle { color: var(--text-subtle); }
-
-        /* Links */
-        a { color: inherit; }
-
-        /* Toggle button */
-        #theme-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
-            border: 1px solid var(--border);
-            background: transparent;
-            cursor: pointer;
-            color: var(--text);
-            transition: background 0.2s;
-            font-size: 15px;
-            flex-shrink: 0;
-        }
-
-        #theme-toggle:hover { background: var(--hover-bg); }
-
-        /* Hamburger lines */
-        .ham-line { background-color: var(--text); }
-
-        /* View-more buttons */
-        .theme-btn {
-            border: 1px solid var(--border);
-            color: var(--text);
-            background: transparent;
-        }
-        .theme-btn:hover { background: var(--hover-bg); }
-
-        /* Video + project cards inherit border */
-        #videos-container .border,
-        #projects-container .border,
-        #featured-project .border {
-            border-color: var(--border);
-            background-color: var(--bg-card);
-        }
-
-        /* Profile image: keep mix-blend only in light mode */
-        [data-theme="dark"] #profile-img {
-            mix-blend-mode: normal;
-            opacity: 1;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="font-sans">
@@ -193,7 +86,8 @@
                 <p class="mt-5 max-w-2xl theme-muted">
                     Hi, I am a web developer with a passion for building efficient and scalable applications. I have
                     experience working with Python, Django, and React, and I enjoy contributing to open source projects.
-                    I am always eager to learn new technologies and take on challenging projects that allow me to grow as
+                    I am always eager to learn new technologies and take on challenging projects that allow me to grow
+                    as
                     a developer.
                 </p>
             </div>
@@ -241,8 +135,7 @@
             <div id="featured-project" class="mb-6"></div>
             <div id="projects-container" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
             <div class="mt-8 text-center">
-                <button id="projects-more-btn"
-                    class="px-6 py-2 text-sm rounded theme-btn hidden">View more</button>
+                <button id="projects-more-btn" class="px-6 py-2 text-sm rounded theme-btn hidden">View more</button>
             </div>
         </div>
     </section>
@@ -253,8 +146,7 @@
             <h2 class="text-2xl font-semibold border-b pb-2 mb-6 theme-border">Videos 🎬</h2>
             <div id="videos-container" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
             <div class="mt-8 text-center">
-                <button id="videos-more-btn"
-                    class="px-6 py-2 text-sm rounded theme-btn hidden">View more</button>
+                <button id="videos-more-btn" class="px-6 py-2 text-sm rounded theme-btn hidden">View more</button>
             </div>
         </div>
     </section>
