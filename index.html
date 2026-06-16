@@ -18,14 +18,18 @@
 
     <!-- fetch navbar from common -->
     <div id="navbar"></div>
-
+    <script src="common/navbar.js"></script>
     <script>
         fetch('common/navbar.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('navbar').innerHTML = data;
+
+                initNavbar();
             });
     </script>
+
+
 
 
     <!-- Container -->
@@ -138,7 +142,6 @@
         </div>
     </section>
 
-    <script src="common/navbar.js"></script>
 
     <script>
         const VIDEOS_PER_PAGE = 6;
