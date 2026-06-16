@@ -14,6 +14,11 @@ To add a project, go to github and add a topic 'portfolio'.
     git clone https://github.com/abhinavpbabu/abhinavpbabu.github.io.git
     ```
 
+2. add submodule
+    ```
+    git submodule add https://github.com/thesophile/website-common.git common
+    ```
+
 2. serve it
     ```
     python3 -m http.server
