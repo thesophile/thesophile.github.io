@@ -10,7 +10,16 @@
       "Save and access your code anywhere.",
       "Mobile accessibility."
     ],
-    "tech": ["Python", "Django", "PostgreSQL", "DjangoQ", "Docker", "HTML", "CSS", "JavaScript"]
+    "tech": [
+      "Python",
+      "Django",
+      "PostgreSQL",
+      "DjangoQ",
+      "Docker",
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ]
   },
   {
     "title": "Appoint",
@@ -23,7 +32,31 @@
       "Generates token number",
       "Doctors can sign up easily"
     ],
-    "tech": ["Python", "Django", "HTML", "CSS", "JavaScript"]
+    "tech": [
+      "Python",
+      "Django",
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ]
+  },
+  {
+    "title": "Sales-management-system",
+    "image": "https://raw.githubusercontent.com/thesophile/sales-management-system/main/thumbnail/thumbnail.webp",
+    "desc": "Simple Django app for managing sales and inventory",
+    "repo": "https://github.com/thesophile/sales-management",
+    "features": [
+      "Book doctor appointments from home",
+      "Generates token number",
+      "Doctors can sign up easily"
+    ],
+    "tech": [
+      "Python",
+      "Django",
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ]
   },
   {
     "title": "Restaurant Demo",
@@ -36,7 +69,14 @@
       "Clean professional UI",
       "Maintainable code"
     ],
-    "tech": ["React", "JavaScript", "Vite", "npm", "TailwindCSS", "CSS"]
+    "tech": [
+      "React",
+      "JavaScript",
+      "Vite",
+      "npm",
+      "TailwindCSS",
+      "CSS"
+    ]
   },
   {
     "title": "Static Ecommerce Website",
@@ -49,7 +89,11 @@
       "Cart and checkout system",
       "Email notifications on order"
     ],
-    "tech": ["HTML", "CSS", "JavaScript"]
+    "tech": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ]
   },
   {
     "title": "YT Downloader GUI",
@@ -64,6 +108,9 @@
       "Real-time progress display",
       "Built with Tkinter"
     ],
-    "tech": ["Python", "Tkinter"]
+    "tech": [
+      "Python",
+      "Tkinter"
+    ]
   }
 ]
