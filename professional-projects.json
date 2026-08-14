@@ -1,0 +1,29 @@
+[
+  {
+    "title": "Example Professional Project",
+    "image": "/img/project_placeholder.webp",
+    "desc": "Replace this with a description of your professional project.",
+    "website": "https://example.com",
+    "repo": "https://github.com/thesophile/example-repo",
+    "features": [
+      "Key feature one",
+      "Key feature two"
+    ],
+    "tech": [
+      "Python",
+      "Django"
+    ]
+  },
+  {
+    "title": "Another Professional Project",
+    "image": "/img/project_placeholder.webp",
+    "desc": "Replace this with a description of another professional project.",
+    "website": null,
+    "repo": null,
+    "features": [],
+    "tech": [
+      "React",
+      "TypeScript"
+    ]
+  }
+]

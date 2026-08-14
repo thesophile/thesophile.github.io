@@ -187,3 +187,18 @@ Promise.all([
 }).catch(() => {
     document.getElementById('featured-project').innerHTML = 'Failed to load projects';
 });
+
+fetch('professional-projects.json')
+    .then(res => res.json())
+    .then(projects => {
+        const container = document.getElementById('professional-projects-container');
+        projects.forEach(p => {
+            const card = makeGridCard(p.title, p.desc, p.image, p.website, p.repo, p.tech);
+            container.appendChild(card);
+            card.querySelectorAll('img[data-fallbacks]').forEach(activateImage);
+        });
+    })
+    .catch(() => {
+        document.getElementById('professional-projects-container').innerHTML =
+            '<p class="theme-subtle text-sm">Failed to load professional projects.</p>';
+    });

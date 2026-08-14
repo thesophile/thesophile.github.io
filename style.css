@@ -95,7 +95,8 @@
         /* Video + project cards inherit border */
         #videos-container .border,
         #projects-container .border,
-        #featured-project .border {
+        #featured-project .border,
+        #professional-projects-container .border {
             border-color: var(--border);
             background-color: var(--bg-card);
         }

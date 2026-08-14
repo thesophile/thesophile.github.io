@@ -6,6 +6,7 @@ It is a Simple & Minimal Static Portfolio Site using just HTML, Javascript and t
 There are two projects section- The highlighted projects are pulled from projects.json
 The second project section is pulled directly from github, filtered by the keyword 'portfolio'.
 To add a project, go to github and add a topic 'portfolio'.
+Professional projects are pulled from professional-projects.json. To add or edit them, edit that file.
 
 ### Local Installation
 
