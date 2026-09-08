@@ -1,29 +1,65 @@
 [
   {
-    "title": "Example Professional Project",
+    "title": "Time Tracker",
     "image": "/img/project_placeholder.webp",
-    "desc": "Replace this with a description of your professional project.",
-    "website": "https://example.com",
-    "repo": "https://github.com/thesophile/example-repo",
+    "desc": "A comprehensive workforce operations platform designed to streamline organizational workflows, productivity, and workforce visibility.",
+    "website": "https://timetracker.programersapps.com",
+    "repo": null,
     "features": [
-      "Key feature one",
-      "Key feature two"
+      "Workforce management",
+      "Attendance and time management",
+      "Employee operations",
+      "Role-based access control",
+      "Operational reporting"
     ],
     "tech": [
       "Python",
-      "Django"
+      "Django",
+      "React",
+      "Vite",
+      "Tailwind CSS"
     ]
   },
   {
-    "title": "Another Professional Project",
+    "title": "AssetPro",
     "image": "/img/project_placeholder.webp",
-    "desc": "Replace this with a description of another professional project.",
+    "desc": "A comprehensive inventory management platform designed to streamline asset operations, resource visibility, and organizational workflows through a centralized system.",
     "website": null,
     "repo": null,
-    "features": [],
+    "features": [
+      "Inventory management",
+      "Asset operations",
+      "Resource management",
+      "Organizational workflows",
+      "Centralized data management"
+    ],
     "tech": [
+      "Python",
+      "Django",
       "React",
-      "TypeScript"
+      "Vite",
+      "Tailwind CSS"
+    ]
+  },
+  {
+    "title": "Leads",
+    "image": "/img/project_placeholder.webp",
+    "desc": "A scalable business management and CRM platform designed to optimize customer operations, sales workflows, and organizational processes.",
+    "website": null,
+    "repo": null,
+    "features": [
+      "Customer relationship management",
+      "Sales operations",
+      "Workflow automation",
+      "Business intelligence",
+      "Organizational management"
+    ],
+    "tech": [
+      "Python",
+      "Django",
+      "React",
+      "Vite",
+      "Tailwind CSS"
     ]
   }
 ]
