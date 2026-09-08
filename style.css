@@ -29,6 +29,15 @@
             --hover-bg: #1f1f1f;
         }
 
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 4rem;
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+
         body {
             background-color: var(--bg);
             color: var(--text);
