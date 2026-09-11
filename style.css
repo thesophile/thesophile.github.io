@@ -93,6 +93,40 @@
         /* Hamburger lines */
         .ham-line { background-color: var(--text); }
 
+        /* Contact buttons */
+        .btn-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            background-color: var(--text);
+            color: var(--bg);
+            transition: opacity 0.2s, border-color 0.2s;
+        }
+        .btn-card:hover { opacity: 0.8; }
+        .btn-card i {
+            flex-shrink: 0;
+            font-size: 2rem;
+            color: var(--bg-card);
+        }
+        .btn-card i.fa-envelope { color: #ea4335; }
+        .btn-card i.fa-github { color: var(--bg-card); }
+        .btn-card i.fa-linkedin { color: #0a66c2; }
+        .btn-card .name {
+            display: block;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--bg);
+        }
+        .btn-card .username {
+            display: block;
+            color: var(--bg-card);
+            font-size: 0.875rem;
+            line-height: 1.2;
+        }
+
         /* View-more buttons */
         .theme-btn {
             border: 1px solid var(--border);
