@@ -177,18 +177,32 @@
                 div.style.borderColor = 'var(--border)';
                 div.style.backgroundColor = 'var(--bg-card)';
                 div.innerHTML = `
-                    <div class="aspect-video w-full">
+                    <div class="aspect-video w-full relative group cursor-pointer video-face" title="${v.title}">
+                        <img
+                            class="w-full h-full object-cover"
+                            src="https://i.ytimg.com/vi/${v.youtube_id}/hqdefault.jpg"
+                            alt="${v.title}"
+                            loading="lazy">
+                        <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition flex items-center justify-center">
+                            <i class="fa-solid fa-circle-play text-white text-5xl" style="filter: drop-shadow(0 2px 6px rgba(0,0,0,0.6));"></i>
+                        </div>
+                    </div>
+                    <div class="p-3 text-sm font-medium">${v.title}</div>
+                `;
+                div.querySelector('.video-face').addEventListener('click', () => {
+                    const face = div.querySelector('.video-face');
+                    face.innerHTML = `
                         <iframe
                             class="w-full h-full"
-                            src="https://www.youtube.com/embed/${v.youtube_id}"
+                            src="https://www.youtube.com/embed/${v.youtube_id}?autoplay=1&rel=0"
                             title="${v.title}"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen>
                         </iframe>
-                    </div>
-                    <div class="p-3 text-sm font-medium">${v.title}</div>
-                `;
+                    `;
+                    face.classList.remove('group', 'cursor-pointer');
+                });
                 container.appendChild(div);
             });
 
