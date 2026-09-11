@@ -10,7 +10,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=5">
     <link rel="stylesheet" href="common/navbar.css">
 </head>
 
@@ -60,6 +60,14 @@
                     as
                     a developer.
                 </p>
+            </div>
+        </section>
+
+        <!-- Clients -->
+        <section class="py-10" id="clients">
+            <h2 class="text-2xl font-semibold border-b pb-2 mb-6 theme-border">Worked With 🤝</h2>
+            <div class="client-marquee">
+                <div class="client-track" id="clients-track"></div>
             </div>
         </section>
 
@@ -221,6 +229,47 @@
             .catch(() => {
                 document.getElementById('videos-container').innerHTML =
                     '<p class="theme-subtle text-sm">Failed to load videos.</p>';
+            });
+    </script>
+
+    <script>
+        fetch('clients.json')
+            .then(res => res.json())
+            .then(clients => {
+                const valid = (clients || []).filter(c => c.logo);
+
+                const checks = valid.map(c => new Promise(resolve => {
+                    const probe = new Image();
+                    probe.onload = () => resolve(c);
+                    probe.onerror = () => resolve(null);
+                    probe.src = c.logo;
+                }));
+
+                Promise.all(checks).then(results => {
+                    const loaded = results.filter(Boolean);
+                    const section = document.getElementById('clients');
+                    if (!loaded.length) {
+                        if (section) section.remove();
+                        return;
+                    }
+
+                    const track = document.getElementById('clients-track');
+                    const buildGroup = (hidden) => {
+                        const items = loaded.map(c => {
+                            const tag = c.url ? 'a' : 'span';
+                            const attrs = c.url ? ` href="${c.url}" target="_blank" rel="noopener"` : '';
+                            const aria = hidden ? ' aria-hidden="true"' : '';
+                            return `<${tag} class="client-item"${attrs}${aria}><img src="${c.logo}" alt="${c.name}" loading="lazy" style="display:block;height:56px;width:auto;max-width:320px;max-height:56px;object-fit:contain"></${tag}>`;
+                        }).join('');
+                        return `<div class="client-group"${hidden ? ' aria-hidden="true"' : ''}>${items}</div>`;
+                    };
+
+                    track.innerHTML = buildGroup(false) + buildGroup(true);
+                });
+            })
+            .catch(() => {
+                const section = document.getElementById('clients');
+                if (section) section.remove();
             });
     </script>
 

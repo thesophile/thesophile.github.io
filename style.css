@@ -149,3 +149,87 @@
             mix-blend-mode: normal;
             opacity: 1;
         }
+
+        /* ── Client logo marquee ── */
+        .client-marquee {
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+        }
+
+        .client-track {
+            display: flex;
+            width: max-content;
+            animation: client-scroll 30s linear infinite;
+        }
+
+        .client-group {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding-right: 2rem;
+        }
+
+        .client-marquee:hover .client-track {
+            animation-play-state: paused;
+        }
+
+        .client-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            height: 3.5rem;
+            max-height: 3.5rem;
+            overflow: hidden;
+        }
+
+        .client-item img {
+            display: block;
+            height: 3.5rem !important;
+            max-height: 3.5rem;
+            width: auto;
+            max-width: 20rem;
+            object-fit: contain;
+            filter: grayscale(1);
+            opacity: 0.6;
+            transition: filter 0.25s, opacity 0.25s;
+        }
+
+        .client-item:hover img {
+            filter: grayscale(0);
+            opacity: 1;
+        }
+
+        [data-theme="dark"] .client-item img {
+            filter: grayscale(1) invert(1) brightness(1.6);
+        }
+
+        [data-theme="dark"] .client-item:hover img {
+            filter: grayscale(0);
+            opacity: 1;
+        }
+
+        @keyframes client-scroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .client-track {
+                animation: none;
+                width: 100%;
+            }
+
+            .client-group {
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+                padding-right: 0;
+                row-gap: 1rem;
+            }
+
+            .client-group[aria-hidden="true"] {
+                display: none;
+            }
+        }
