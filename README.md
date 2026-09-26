@@ -26,3 +26,11 @@ Professional projects are pulled from professional-projects.json. To add or edit
     ```
 
     Then go to `http://localhost:8000/`
+
+
+
+My clients
+
+- Programers
+- Neopotter
+- 
