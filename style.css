@@ -16,6 +16,16 @@
             --text-subtle: #6b7280;
             --border: #e5e7eb;
             --hover-bg: #f3f4f6;
+
+            /* RGB 9, 156, 186 theme color (darker for light mode contrast) */
+            --accent: #087f98;
+            --accent-hover: #066579;
+            --accent-btn: rgb(9, 156, 186);
+            --accent-btn-hover: #077f98;
+            --accent-btn-text: #ffffff;
+            --text-link: #087f98;
+            --text-link-hover: #055566;
+            --accent-subtle: rgba(9, 156, 186, 0.1);
         }
 
         [data-theme="dark"] {
@@ -27,6 +37,16 @@
             --text-subtle: #9ca3af;
             --border: #2a2a2a;
             --hover-bg: #1f1f1f;
+
+            /* RGB 9, 156, 186 theme color (lighter for dark mode contrast) */
+            --accent: #2cd0f3;
+            --accent-hover: #78e2f8;
+            --accent-btn: rgb(9, 156, 186);
+            --accent-btn-hover: #1dbad8;
+            --accent-btn-text: #ffffff;
+            --text-link: #2cd0f3;
+            --text-link-hover: #78e2f8;
+            --accent-subtle: rgba(44, 208, 243, 0.15);
         }
 
         html {
@@ -71,8 +91,50 @@
         /* Links */
         a { color: inherit; }
 
+        a.underline, a.text-link {
+            color: var(--text-link);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color 0.2s;
+        }
+
+        a.underline:hover, a.text-link:hover {
+            color: var(--text-link-hover);
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        ::selection {
+            background-color: var(--accent);
+            color: #ffffff;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Accent Primary Buttons */
+        .btn-primary {
+            background-color: var(--accent-btn);
+            color: var(--accent-btn-text) !important;
+            transition: background-color 0.2s, opacity 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-btn-hover);
+        }
+
+        .featured-badge {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
         /* Toggle button */
-        #theme-toggle {
+        #theme-toggle,
+        #theme-toggle-mobile {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -83,12 +145,17 @@
             background: transparent;
             cursor: pointer;
             color: var(--text);
-            transition: background 0.2s;
+            transition: background 0.2s, border-color 0.2s, color 0.2s;
             font-size: 15px;
             flex-shrink: 0;
         }
 
-        #theme-toggle:hover { background: var(--hover-bg); }
+        #theme-toggle:hover,
+        #theme-toggle-mobile:hover {
+            background: var(--accent-subtle) !important;
+            border-color: var(--accent) !important;
+            color: var(--accent) !important;
+        }
 
         /* Hamburger lines */
         .ham-line { background-color: var(--text); }
@@ -105,7 +172,10 @@
             color: var(--bg);
             transition: opacity 0.2s, border-color 0.2s;
         }
-        .btn-card:hover { opacity: 0.8; }
+        .btn-card:hover {
+            opacity: 0.85;
+            border-color: var(--accent);
+        }
         .btn-card i {
             flex-shrink: 0;
             font-size: 2rem;
@@ -132,8 +202,13 @@
             border: 1px solid var(--border);
             color: var(--text);
             background: transparent;
+            transition: border-color 0.2s, color 0.2s, background-color 0.2s;
         }
-        .theme-btn:hover { background: var(--hover-bg); }
+        .theme-btn:hover {
+            background: var(--accent-subtle);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
 
         /* Video + project cards inherit border */
         #videos-container .border,
