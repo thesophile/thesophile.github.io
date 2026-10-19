@@ -64,6 +64,15 @@
             transition: background-color 0.25s, color 0.25s;
         }
 
+        #navbar {
+            min-height: 3.5rem;
+        }
+
+        .hero-section {
+            min-height: calc(100vh - 3.5rem);
+            min-height: calc(100dvh - 3.5rem);
+        }
+
         nav {
             background-color: var(--bg-nav);
             border-color: var(--border);
