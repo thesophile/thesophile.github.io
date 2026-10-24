@@ -49,7 +49,7 @@ function makeGridCard(title, desc, imageUrl, websiteUrl, repoUrl, techList = [])
         ? `<a href="${repoUrl}" target="_blank" class="px-4 py-2 btn-primary text-sm font-medium rounded">Repo</a>`
         : '';
     const techTags = techList.map(t =>
-        `<span class="px-2 py-0.5 border rounded text-xs">${t}</span>`
+        `<span class="px-2 py-0.5 border rounded text-xs glow-tag">${t}</span>`
     ).join('');
     const websiteLink = websiteUrl
         ? `<a href="${websiteUrl}" target="_blank" class="underline">Website</a> • `
@@ -59,7 +59,7 @@ function makeGridCard(title, desc, imageUrl, websiteUrl, repoUrl, techList = [])
         : '';
 
     const div = document.createElement('div');
-    div.className = 'border rounded overflow-hidden flex flex-col';
+    div.className = 'border rounded overflow-hidden flex flex-col glow-card';
 
     const imageWrapper = document.createElement('div');
     imageWrapper.className = 'relative group';
@@ -112,10 +112,10 @@ Promise.all([
     const fp = projects[0];
     if (fp) {
         const techTags = (fp.tech || []).map(t =>
-            `<span class="px-2 py-0.5 border rounded text-xs">${t}</span>`
+            `<span class="px-2 py-0.5 border rounded text-xs glow-tag">${t}</span>`
         ).join('');
         featuredEl.innerHTML = `
-            <div class="border rounded overflow-hidden flex flex-col md:flex-row">
+            <div class="border rounded overflow-hidden flex flex-col md:flex-row glow-card">
                 <div class="relative w-full md:w-[60%] shrink-0 group">
                     <img src="${fp.image}" class="w-full h-56 md:h-full object-cover" />
                     <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center gap-4">
@@ -125,7 +125,7 @@ Promise.all([
                 </div>
                 <div class="p-6 flex flex-col justify-between flex-1">
                     <div>
-                        <span class="text-xs border px-2 py-0.5 rounded uppercase tracking-wide featured-badge">Featured</span>
+                        <span class="text-xs border px-2 py-0.5 rounded uppercase tracking-wide featured-badge glow-tag">Featured</span>
                         <h3 class="mt-3 text-xl font-semibold">${fp.title}</h3>
                         <p class="text-sm mt-2" style="color:var(--text-muted)">${fp.desc}</p>
                         <ul class="mt-3 text-sm list-disc list-inside space-y-1" style="color:var(--text-muted)">

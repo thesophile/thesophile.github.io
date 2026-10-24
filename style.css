@@ -26,6 +26,20 @@
             --text-link: #087f98;
             --text-link-hover: #055566;
             --accent-subtle: rgba(9, 156, 186, 0.1);
+
+            /* Glow palette (one colour per section) */
+            --glow-cyan: #22d3ee;
+            --glow-emerald: #34d399;
+            --glow-violet: #a78bfa;
+            --glow-amber: #fbbf24;
+            --glow-pink: #f472b6;
+            --glow-sky: #38bdf8;
+            --glow: var(--glow-cyan);
+
+            /* Contact card (inverted) */
+            --btn-card-bg: #111827;
+            --btn-card-text: #ffffff;
+            --btn-card-muted: #f9fafb;
         }
 
         [data-theme="dark"] {
@@ -47,6 +61,11 @@
             --text-link: #2cd0f3;
             --text-link-hover: #78e2f8;
             --accent-subtle: rgba(44, 208, 243, 0.15);
+
+            /* Contact card (inverted) */
+            --btn-card-bg: #f3f4f6;
+            --btn-card-text: #0f0f0f;
+            --btn-card-muted: #1a1a1a;
         }
 
         html {
@@ -154,7 +173,7 @@
             background: transparent;
             cursor: pointer;
             color: var(--text);
-            transition: background 0.2s, border-color 0.2s, color 0.2s;
+            transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.25s ease;
             font-size: 15px;
             flex-shrink: 0;
         }
@@ -177,31 +196,30 @@
             padding: 1rem;
             border: 1px solid var(--border);
             border-radius: 0.75rem;
-            background-color: var(--text);
-            color: var(--bg);
+            background-color: var(--btn-card-bg);
+            color: var(--btn-card-text);
             transition: opacity 0.2s, border-color 0.2s;
         }
         .btn-card:hover {
-            opacity: 0.85;
-            border-color: var(--accent);
+            opacity: 1;
         }
         .btn-card i {
             flex-shrink: 0;
             font-size: 2rem;
-            color: var(--bg-card);
+            color: var(--btn-card-muted);
         }
         .btn-card i.fa-envelope { color: #ea4335; }
-        .btn-card i.fa-github { color: var(--bg-card); }
+        .btn-card i.fa-github { color: var(--btn-card-muted); }
         .btn-card i.fa-linkedin { color: #0a66c2; }
         .btn-card .name {
             display: block;
             font-weight: 600;
             line-height: 1.2;
-            color: var(--bg);
+            color: var(--btn-card-text);
         }
         .btn-card .username {
             display: block;
-            color: var(--bg-card);
+            color: var(--btn-card-muted);
             font-size: 0.875rem;
             line-height: 1.2;
         }
@@ -226,6 +244,81 @@
         #professional-projects-container .border {
             border-color: var(--border);
             background-color: var(--bg-card);
+        }
+
+        /* ── Hover glow ───────────────────────────────────────────────
+           Every section sets its own --glow colour, so anything hovered
+           inside a section glows in that section's colour. */
+        #hero {
+            --glow: var(--glow-cyan);
+        }
+
+        #skills {
+            --glow: var(--glow-emerald);
+        }
+
+        #featured {
+            --glow: var(--glow-violet);
+        }
+
+        #professional-projects {
+            --glow: var(--glow-amber);
+        }
+
+        #videos {
+            --glow: var(--glow-pink);
+        }
+
+        #contact {
+            --glow: var(--glow-sky);
+        }
+
+        /* Hover targets get a smooth transition for the glow */
+        :is(a, button, img, .glow-card, .glow-tag) {
+            transition: box-shadow 0.25s ease, border-color 0.25s ease,
+                color 0.25s ease, background-color 0.25s ease,
+                opacity 0.25s ease, transform 0.25s ease, filter 0.25s ease;
+        }
+
+        /* Text and icons glow with a soft text shadow */
+        :is(h1, h2, h3, h4, p, li, span, strong, em, i, small, code) {
+            transition: text-shadow 0.25s ease, color 0.25s ease;
+        }
+
+        :is(h1, h2, h3, h4, p, li, span, strong, em, i, small, code):hover {
+            text-shadow: 0 0 18px var(--glow);
+        }
+
+        /* Links, buttons and tags */
+        :is(a, button, .glow-tag):hover {
+            box-shadow: 0 0 16px -3px var(--glow);
+        }
+
+        .glow-tag:hover {
+            border-color: var(--glow) !important;
+            color: var(--glow);
+        }
+
+        /* Cards */
+        .glow-card {
+            border-color: var(--border);
+        }
+
+        .glow-card:hover {
+            border-color: var(--glow) !important;
+            box-shadow: 0 0 0 1px var(--glow),
+                0 0 26px -6px var(--glow),
+                0 0 52px -20px var(--glow);
+            transform: translateY(-3px);
+        }
+
+        /* Images */
+        img:hover {
+            box-shadow: 0 0 26px -6px var(--glow);
+        }
+
+        #profile-img:hover {
+            transform: scale(1.03);
         }
 
         /* Profile image: keep mix-blend only in light mode */

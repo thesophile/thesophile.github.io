@@ -298,7 +298,7 @@
     if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
     else              document.documentElement.removeAttribute('data-theme');
   }
-  applyTheme(localStorage.getItem('theme') || 'light');
+  applyTheme(localStorage.getItem('theme') || 'dark');
   window.addEventListener('storage', e => { if (e.key === 'theme') applyTheme(e.newValue); });
 
   // ── Path display ─────────────────────────────────────────────

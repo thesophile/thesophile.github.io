@@ -12,7 +12,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <meta name="theme-color" content="#099cba">
     <link rel="stylesheet" href="common/navbar.css">
-    <link rel="stylesheet" href="style.css?v=7">
+    <link rel="stylesheet" href="style.css?v=9">
+    <script>
+        // Apply the theme before first paint (dark by default) to avoid a flash
+        (function () {
+            var saved = null;
+            try { saved = localStorage.getItem('theme'); } catch (e) { }
+            document.documentElement.setAttribute('data-theme', saved || 'dark');
+        })();
+    </script>
 </head>
 
 <body class="font-sans">
@@ -39,7 +47,7 @@
         <!-- Hero -->
         <section id="hero" class="hero-section flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 py-12 md:py-0">
             <div class="shrink-0 flex justify-center">
-                <img id="profile-img" src="img/profile.jpg"
+                <img id="profile-img" src="img/profile.png"
                     class="w-48 sm:w-56 md:w-64 aspect-square object-cover rounded-lg mix-blend-multiply opacity-95" />
             </div>
             <div class="flex-1 max-w-2xl">
@@ -50,9 +58,9 @@
                     Full stack Web Developer
                 </p>
                 <div class="mt-5 flex flex-wrap gap-2">
-                    <span class="px-3 py-1 text-sm border rounded theme-border">Python</span>
-                    <span class="px-3 py-1 text-sm border rounded theme-border">Django</span>
-                    <span class="px-3 py-1 text-sm border rounded theme-border">React</span>
+                    <span class="px-3 py-1 text-sm border rounded theme-border glow-tag">Python</span>
+                    <span class="px-3 py-1 text-sm border rounded theme-border glow-tag">Django</span>
+                    <span class="px-3 py-1 text-sm border rounded theme-border glow-tag">React</span>
                 </div>
                 <p class="mt-5 theme-muted">
                     Hi, I am a web developer with a passion for building efficient and scalable applications. I have
@@ -76,19 +84,19 @@
         <section class="py-16" id="skills">
             <h2 class="text-2xl font-semibold border-b pb-2 mb-4 theme-border">Skills ⚙️</h2>
             <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-                <div class="border p-3 theme-border">Backend (Python, Django)</div>
-                <div class="border p-3 theme-border">Frontend (React, HTML, CSS, JavaScript)</div>
-                <div class="border p-3 theme-border">Django REST API development (DRF)</div>
-                <div class="border p-3 theme-border">Database handling (MySQL,Postgres,SQLite)</div>
-                <div class="border p-3 theme-border">Deployment and hosting (AWS EC2, Cpanel)</div>
-                <div class="border p-3 theme-border">Version control (Git/GitHub)</div>
-                <div class="border p-3 theme-border">Responsive UI design</div>
-                <div class="border p-3 theme-border">Performance optimization</div>
-                <div class="border p-3 theme-border">Security best practices</div>
-                <div class="border p-3 theme-border">Debugging and troubleshooting</div>
-                <div class="border p-3 theme-border">Documentation</div>
-                <div class="border p-3 theme-border">User-friendly UI/UX</div>
-                <div class="border p-3 theme-border">Testing basics</div>
+                <div class="border p-3 theme-border glow-card">Backend (Python, Django)</div>
+                <div class="border p-3 theme-border glow-card">Frontend (React, HTML, CSS, JavaScript)</div>
+                <div class="border p-3 theme-border glow-card">Django REST API development (DRF)</div>
+                <div class="border p-3 theme-border glow-card">Database handling (MySQL,Postgres,SQLite)</div>
+                <div class="border p-3 theme-border glow-card">Deployment and hosting (AWS EC2, Cpanel)</div>
+                <div class="border p-3 theme-border glow-card">Version control (Git/GitHub)</div>
+                <div class="border p-3 theme-border glow-card">Responsive UI design</div>
+                <div class="border p-3 theme-border glow-card">Performance optimization</div>
+                <div class="border p-3 theme-border glow-card">Security best practices</div>
+                <div class="border p-3 theme-border glow-card">Debugging and troubleshooting</div>
+                <div class="border p-3 theme-border glow-card">Documentation</div>
+                <div class="border p-3 theme-border glow-card">User-friendly UI/UX</div>
+                <div class="border p-3 theme-border glow-card">Testing basics</div>
             </div>
         </section>
 
@@ -142,21 +150,21 @@
             <section id="contact" class="py-16">
                 <h2 class="text-2xl font-semibold border-b pb-2 mb-4 theme-border">Contact</h2>
                 <div class="mt-4 grid gap-4 sm:grid-cols-3">
-                    <a href="mailto:abhinavbabu.contact@gmail.com" class="btn-card">
+                    <a href="mailto:abhinavbabu.contact@gmail.com" class="btn-card glow-card">
                         <i class="fa-solid fa-envelope"></i>
                         <span>
                             <span class="name">Email</span>
                             <span class="username">mail@abhinavbabu.in</span>
                         </span>
                     </a>
-                    <a href="https://github.com/thesophile" target="_blank" class="btn-card">
+                    <a href="https://github.com/thesophile" target="_blank" class="btn-card glow-card">
                         <i class="fa-brands fa-github"></i>
                         <span>
                             <span class="name">GitHub</span>
                             <span class="username">thesophile</span>
                         </span>
                     </a>
-                    <a href="https://linkedin.com/in/abhinav-p-babu" target="_blank" class="btn-card">
+                    <a href="https://linkedin.com/in/abhinav-p-babu" target="_blank" class="btn-card glow-card">
                         <i class="fa-brands fa-linkedin"></i>
                         <span>
                             <span class="name">LinkedIn</span>
@@ -181,7 +189,7 @@
 
             batch.forEach(v => {
                 const div = document.createElement('div');
-                div.className = 'border rounded overflow-hidden';
+                div.className = 'border rounded overflow-hidden glow-card';
                 div.style.borderColor = 'var(--border)';
                 div.style.backgroundColor = 'var(--bg-card)';
                 div.innerHTML = `
