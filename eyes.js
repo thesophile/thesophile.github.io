@@ -19,13 +19,16 @@
 
     /* Eye geometry traced from profile.png.
      * `poly` follows the inner edge of the eyelids, `home` is the centre of the
-     * painted iris and `radius` the radius of the painted iris disc. */
+     * painted iris and `radius` the radius of the painted iris disc.
+     * `bounds` is the area the iris centre may travel in: the pupil can reach
+     * every corner of the eye, while the iris itself is cut off by the lids. */
     var EYES = [
         {
             /* viewer's left eye */
             home: { x: 503, y: 330 },
             radius: 44,
-            travel: { x: 32, y: 14 },
+            travel: { x: 84, y: 18 },
+            bounds: { x0: 478, x1: 580, y0: 318, y1: 347 },
             poly: [
                 [462, 320], [470, 313], [480, 310], [490, 308], [500, 307],
                 [510, 308], [520, 310], [530, 312], [540, 314], [550, 316],
@@ -39,7 +42,8 @@
             /* viewer's right eye */
             home: { x: 732, y: 422 },
             radius: 36,
-            travel: { x: 26, y: 11 },
+            travel: { x: 72, y: 20 },
+            bounds: { x0: 706, x1: 800, y0: 404, y1: 450 },
             poly: [
                 [692, 412], [700, 397], [710, 396], [720, 397], [730, 398],
                 [740, 398], [751, 399], [760, 400], [770, 403], [780, 406],
@@ -99,6 +103,10 @@
         c.moveTo(poly[0][0], poly[0][1]);
         for (var i = 1; i < poly.length; i++) c.lineTo(poly[i][0], poly[i][1]);
         c.closePath();
+    }
+
+    function clamp(value, min, max) {
+        return value < min ? min : (value > max ? max : value);
     }
 
     /* ------------------------------------------------------------- inpainting */
@@ -316,15 +324,16 @@
             }
             inpaint(region, mask);
 
-            /* keep the repaired pixels only, everything else stays transparent */
+            /* keep the repaired pixels, feathered so the patch blends into the
+             * painted eye white instead of showing a hard edge */
             var patch = sourceCtx.createImageData(w, h);
             for (var p = 0; p < w * h; p++) {
-                if (!mask[p]) continue;
                 patch.data[p * 4] = region.data[p * 4];
                 patch.data[p * 4 + 1] = region.data[p * 4 + 1];
                 patch.data[p * 4 + 2] = region.data[p * 4 + 2];
-                patch.data[p * 4 + 3] = 255;
+                patch.data[p * 4 + 3] = mask[p] ? 255 : 0;
             }
+            feather(patch, w, h);
             var patchCanvas = document.createElement('canvas');
             patchCanvas.width = w;
             patchCanvas.height = h;
@@ -334,6 +343,32 @@
 
         /* the scratch canvas is not needed any more */
         source.width = source.height = 0;
+    }
+
+    /* Softens the edge of a patch by blurring its alpha channel. */
+    function feather(imageData, w, h) {
+        var alpha = new Float32Array(w * h);
+        var next = new Float32Array(w * h);
+        var i, x, y, pass;
+        for (i = 0; i < w * h; i++) alpha[i] = imageData.data[i * 4 + 3];
+        for (pass = 0; pass < 3; pass++) {
+            for (y = 0; y < h; y++) {
+                for (x = 0; x < w; x++) {
+                    var sum = 0, n = 0, oy, ox;
+                    for (oy = -1; oy <= 1; oy++) {
+                        for (ox = -1; ox <= 1; ox++) {
+                            var nx = x + ox, ny = y + oy;
+                            if (nx < 0 || ny < 0 || nx >= w || ny >= h) continue;
+                            sum += alpha[ny * w + nx];
+                            n++;
+                        }
+                    }
+                    next[y * w + x] = sum / n;
+                }
+            }
+            for (i = 0; i < w * h; i++) alpha[i] = next[i];
+        }
+        for (i = 0; i < w * h; i++) imageData.data[i * 4 + 3] = alpha[i];
     }
 
     /* ---------------------------------------------------------------- drawing */
@@ -435,11 +470,12 @@
         for (var i = 0; i < eyes.length; i++) {
             var eye = eyes[i];
             var home = eye.def.home;
+            var b = eye.def.bounds;
             var dx = mx - home.x, dy = my - home.y;
             var dist = Math.sqrt(dx * dx + dy * dy) || 1;
             var reach = Math.min(1, dist / POINTER_RANGE);
-            eye.targetX = home.x + (dx / dist) * eye.def.travel.x * reach;
-            eye.targetY = home.y + (dy / dist) * eye.def.travel.y * reach;
+            eye.targetX = clamp(home.x + (dx / dist) * eye.def.travel.x * reach, b.x0, b.x1);
+            eye.targetY = clamp(home.y + (dy / dist) * eye.def.travel.y * reach, b.y0, b.y1);
         }
         start();
     }
