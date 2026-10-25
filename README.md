@@ -34,3 +34,9 @@ My clients
 - Programers
 - Neopotter
 - 
+
+
+# Deployment
+
+How the heck is this deployed?
+
