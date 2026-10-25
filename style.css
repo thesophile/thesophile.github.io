@@ -274,7 +274,7 @@
         }
 
         /* Hover targets get a smooth transition for the glow */
-        :is(a, button, img, .glow-card, .glow-tag) {
+        :is(a, button, img, .glow-card, .glow-tag, #profile-wrap) {
             transition: box-shadow 0.25s ease, border-color 0.25s ease,
                 color 0.25s ease, background-color 0.25s ease,
                 opacity 0.25s ease, transform 0.25s ease, filter 0.25s ease;
@@ -317,12 +317,22 @@
             box-shadow: 0 0 26px -6px var(--glow);
         }
 
-        #profile-img:hover {
+        /* Profile portrait with the tracking-eyes overlay */
+        #profile-wrap {
+            position: relative;
+        }
+
+        #eye-canvas {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        #profile-wrap:hover {
             transform: scale(1.03);
         }
 
         /* Profile image: keep mix-blend only in light mode */
-        [data-theme="dark"] #profile-img {
+        [data-theme="dark"] #profile-wrap {
             mix-blend-mode: normal;
             opacity: 1;
         }
