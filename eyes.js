@@ -58,6 +58,7 @@
     var POINTER_RANGE = 250;   /* source px needed to reach the full travel */
     var EASE = 0.25;           /* easing per animation frame */
     var SETTLE = 0.15;         /* below this the animation stops */
+    var REST_DELAY = 900;      /* ms a touch has to be gone before the eyes rest */
 
     var img = document.getElementById('profile-img');
     var wrap = document.getElementById('profile-wrap');
@@ -66,7 +67,6 @@
 
     var ctx = canvas.getContext('2d');
     if ('imageSmoothingQuality' in ctx) ctx.imageSmoothingQuality = 'high';
-    var reduced = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
     var source = document.createElement('canvas');   /* scratch canvas for the inpaint */
     var sourceCtx = source.getContext('2d', { willReadFrequently: true });
@@ -460,6 +460,9 @@
 
     /* ------------------------------------------------------------ animation */
 
+    var restTimer = null;         /* pending return to the neutral gaze */
+    var touching = false;         /* a finger is on the screen */
+
     function aim(clientX, clientY) {
         var rect = canvas.getBoundingClientRect();
         if (!rect.width || !rect.height) return;
@@ -477,7 +480,33 @@
             eye.targetX = clamp(home.x + (dx / dist) * eye.def.travel.x * reach, b.x0, b.x1);
             eye.targetY = clamp(home.y + (dy / dist) * eye.def.travel.y * reach, b.y0, b.y1);
         }
+        /* the pointer is live, so any pending return to centre is cancelled */
+        cancelRest();
         start();
+    }
+
+    /* look back at the neutral position, used once a touch ends */
+    function rest() {
+        for (var i = 0; i < eyes.length; i++) {
+            eyes[i].targetX = eyes[i].def.home.x;
+            eyes[i].targetY = eyes[i].def.home.y;
+        }
+        start();
+    }
+
+    function cancelRest() {
+        if (restTimer === null) return;
+        clearTimeout(restTimer);
+        restTimer = null;
+    }
+
+    function scheduleRest() {
+        cancelRest();
+        if (touching) return;      /* a finger is still down, keep watching it */
+        restTimer = setTimeout(function () {
+            restTimer = null;
+            rest();
+        }, REST_DELAY);
     }
 
     function tick() {
@@ -499,7 +528,7 @@
     }
 
     function start() {
-        if (reduced || running) return;
+        if (running) return;
         running = true;
         window.requestAnimationFrame(tick);
     }
@@ -511,13 +540,36 @@
         buildPatches();
         resize();
 
-        if (!reduced) {
-            window.addEventListener('pointermove', function (e) { aim(e.clientX, e.clientY); }, { passive: true });
-            window.addEventListener('touchmove', function (e) {
-                if (!e.touches.length) return;
-                aim(e.touches[0].clientX, e.touches[0].clientY);
-            }, { passive: true });
-        }
+        /* Mouse, pen and touch all steer the eyes. A phone has no hover, so a
+         * tap has to aim them as well - otherwise they sit still until the
+         * finger starts dragging. */
+
+        window.addEventListener('pointermove', function (e) { aim(e.clientX, e.clientY); }, { passive: true });
+        window.addEventListener('pointerdown', function (e) {
+            aim(e.clientX, e.clientY);
+            if (e.pointerType !== 'mouse') { touching = true; cancelRest(); }
+        }, { passive: true });
+        window.addEventListener('pointerup', function (e) {
+            if (e.pointerType !== 'mouse') { touching = false; scheduleRest(); }
+        }, { passive: true });
+        window.addEventListener('pointercancel', function (e) {
+            if (e.pointerType !== 'mouse') { touching = false; scheduleRest(); }
+        }, { passive: true });
+
+        /* Touch events as well: browsers cancel the pointer stream when a drag
+         * turns into a scroll, and these keep the eyes following the finger. */
+        window.addEventListener('touchstart', function (e) {
+            if (!e.touches.length) return;
+            touching = true;
+            cancelRest();
+            aim(e.touches[0].clientX, e.touches[0].clientY);
+        }, { passive: true });
+        window.addEventListener('touchmove', function (e) {
+            if (!e.touches.length) return;
+            aim(e.touches[0].clientX, e.touches[0].clientY);
+        }, { passive: true });
+        window.addEventListener('touchend', function () { touching = false; scheduleRest(); }, { passive: true });
+        window.addEventListener('touchcancel', function () { touching = false; scheduleRest(); }, { passive: true });
 
         if (window.ResizeObserver) {
             new ResizeObserver(resize).observe(img);
